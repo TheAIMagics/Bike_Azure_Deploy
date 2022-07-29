@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v1
       with:
         registry: https://index.docker.io/v1/
-        username: ${{ secrets.AzureAppService_ContainerUsername_79bf937eb38a4a848ffc32b9160458fe }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_eb4768c20134474f946f439a3f205f5a }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_fb23f45917f646ca948700253e13da6e }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_a654bc8d83664a0b96bedb4cff2e1c3a }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_79bf937eb38a4a848ffc32b9160458fe }}/ineuron-bike:${{ github.sha }}
+        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_fb23f45917f646ca948700253e13da6e }}/ineuron-bike:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'ineuron-bike'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_bfccc16da68742ee9fcd6f615b73e311 }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_79bf937eb38a4a848ffc32b9160458fe }}/ineuron-bike:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_98b9cfa6606640c0a86a121b42444211 }}
+        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_fb23f45917f646ca948700253e13da6e }}/ineuron-bike:${{ github.sha }}'
